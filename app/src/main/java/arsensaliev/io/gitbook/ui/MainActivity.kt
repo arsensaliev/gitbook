@@ -1,8 +1,7 @@
 package arsensaliev.io.gitbook.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import arsensaliev.io.gitbook.databinding.ActivityMainBinding
 import arsensaliev.io.gitbook.mvp.presenter.MainPresenter
 import arsensaliev.io.gitbook.mvp.view.MainView
@@ -16,21 +15,20 @@ class MainActivity : AppCompatActivity(), MainView {
         super.onCreate(savedInstanceState)
         setContentView(ui.root)
 
-        val listener = View.OnClickListener {
-            presenter.counterClick(it.id)
-        }
-
-        ui.btnCounter1.setOnClickListener(listener)
-        ui.btnCounter2.setOnClickListener(listener)
-        ui.btnCounter3.setOnClickListener(listener)
+        ui.btnCounter1.setOnClickListener { presenter.counterOneClick() }
+        ui.btnCounter2.setOnClickListener { presenter.counterTwoClick() }
+        ui.btnCounter3.setOnClickListener { presenter.counterThreeClick() }
     }
 
-    //Подсказка к ПЗ: поделить на 3 отдельные функции и избавиться от index
-    override fun setButtonText(index: Int, text: String) {
-        when(index){
-            0 -> ui.btnCounter1.text = text
-            1 -> ui.btnCounter2.text = text
-            2 -> ui.btnCounter3.text = text
-        }
+    override fun setButtonOneText(text: String) {
+        ui.btnCounter1.text = text
+    }
+
+    override fun setButtonTwoText(text: String) {
+        ui.btnCounter2.text = text
+    }
+
+    override fun setButtonThreeText(text: String) {
+        ui.btnCounter3.text = text
     }
 }
