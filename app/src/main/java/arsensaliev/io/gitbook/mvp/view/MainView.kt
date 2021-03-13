@@ -1,7 +1,10 @@
 package arsensaliev.io.gitbook.mvp.view
 
-interface MainView {
-    fun setButtonOneText(text: String)
-    fun setButtonTwoText(text: String)
-    fun setButtonThreeText(text: String)
+import moxy.MvpView
+import moxy.viewstate.strategy.alias.AddToEndSingle
+
+@AddToEndSingle
+interface MainView : MvpView {
+    fun init()
+    fun updateList()
 }
