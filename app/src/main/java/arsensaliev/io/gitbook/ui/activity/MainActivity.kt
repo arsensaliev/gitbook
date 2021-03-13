@@ -1,21 +1,26 @@
 package arsensaliev.io.gitbook.ui.activity
 
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
+import arsensaliev.io.gitbook.R
 import arsensaliev.io.gitbook.databinding.ActivityMainBinding
-import arsensaliev.io.gitbook.mvp.model.GithubUsersRepo
 import arsensaliev.io.gitbook.mvp.presenter.MainPresenter
 import arsensaliev.io.gitbook.mvp.view.MainView
+import arsensaliev.io.gitbook.ui.App
+import arsensaliev.io.gitbook.ui.BackClickListener
 import arsensaliev.io.gitbook.ui.adapter.UsersRVAdapter
+import arsensaliev.io.gitbook.ui.navigation.AndroidScreens
+import com.github.terrakok.cicerone.androidx.AppNavigator
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
 
 class MainActivity : MvpAppCompatActivity(), MainView {
 
+    val navigator = AppNavigator(this, R.id.container)
+
     private val ui: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     private val presenter by moxyPresenter {
-        MainPresenter(GithubUsersRepo())
+        MainPresenter(App.instance.router, AndroidScreens())
     }
 
     private var adapter: UsersRVAdapter? = null
@@ -25,14 +30,22 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         setContentView(ui.root)
     }
 
-    override fun init() {
-        ui.rvUsers.layoutManager = LinearLayoutManager(this)
-        adapter = UsersRVAdapter(presenter.usersListPresenter)
-        ui.rvUsers.adapter = adapter
+    override fun onResumeFragments() {
+        super.onResumeFragments()
+        App.instance.navigatorHolder.setNavigator(navigator)
     }
 
-    override fun updateList() {
-        adapter?.notifyDataSetChanged()
+    override fun onPause() {
+        super.onPause()
+        App.instance.navigatorHolder.removeNavigator()
     }
 
+    override fun onBackPressed() {
+        supportFragmentManager.fragments.forEach {
+            if (it is BackClickListener && it.backPressed()) {
+                return
+            }
+        }
+        presenter.backClicked()
+    }
 }
