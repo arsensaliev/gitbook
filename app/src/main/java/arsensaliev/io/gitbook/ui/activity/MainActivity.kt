@@ -6,7 +6,7 @@ import arsensaliev.io.gitbook.databinding.ActivityMainBinding
 import arsensaliev.io.gitbook.mvp.presenter.MainPresenter
 import arsensaliev.io.gitbook.mvp.view.MainView
 import arsensaliev.io.gitbook.ui.App
-import arsensaliev.io.gitbook.ui.BackClickListener
+import arsensaliev.io.gitbook.ui.BackButtonListener
 import arsensaliev.io.gitbook.ui.adapter.UsersRVAdapter
 import arsensaliev.io.gitbook.ui.navigation.AndroidScreens
 import com.github.terrakok.cicerone.androidx.AppNavigator
@@ -42,7 +42,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
 
     override fun onBackPressed() {
         supportFragmentManager.fragments.forEach {
-            if (it is BackClickListener && it.backPressed()) {
+            if (it is BackButtonListener && it.backPressed()) {
                 return
             }
         }

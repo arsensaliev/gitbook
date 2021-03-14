@@ -1,5 +1,5 @@
 package arsensaliev.io.gitbook.ui
 
-interface BackClickListener {
+interface BackButtonListener {
     fun backPressed(): Boolean
 }

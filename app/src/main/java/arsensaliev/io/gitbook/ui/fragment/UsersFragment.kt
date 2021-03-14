@@ -9,19 +9,20 @@ import arsensaliev.io.gitbook.mvp.model.GithubUsersRepo
 import arsensaliev.io.gitbook.mvp.presenter.UsersPresenter
 import arsensaliev.io.gitbook.mvp.view.UsersView
 import arsensaliev.io.gitbook.ui.App
-import arsensaliev.io.gitbook.ui.BackClickListener
+import arsensaliev.io.gitbook.ui.BackButtonListener
 import arsensaliev.io.gitbook.ui.adapter.UsersRVAdapter
+import arsensaliev.io.gitbook.ui.navigation.AndroidScreens
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
-class UsersFragment : MvpAppCompatFragment(), UsersView, BackClickListener {
+class UsersFragment : MvpAppCompatFragment(), UsersView, BackButtonListener {
 
     companion object {
         fun newInstance() = UsersFragment()
     }
 
     private val presenter by moxyPresenter {
-        UsersPresenter(GithubUsersRepo(), App.instance.router)
+        UsersPresenter(GithubUsersRepo(), App.instance.router, AndroidScreens())
     }
 
     private var ui: FragmentUsersBinding? = null
@@ -34,8 +35,8 @@ class UsersFragment : MvpAppCompatFragment(), UsersView, BackClickListener {
         savedInstanceState: Bundle?
     ) = FragmentUsersBinding.inflate(inflater, container, false).also { ui = it }.root
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         ui = null
     }
 
