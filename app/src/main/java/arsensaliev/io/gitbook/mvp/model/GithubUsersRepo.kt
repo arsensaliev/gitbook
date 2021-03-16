@@ -1,6 +1,8 @@
 package arsensaliev.io.gitbook.mvp.model
 
 import arsensaliev.io.gitbook.mvp.model.entity.GithubUser
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 class GithubUsersRepo {
     private val users = listOf<GithubUser>(
@@ -11,7 +13,7 @@ class GithubUsersRepo {
         GithubUser("login5"),
     )
 
-    fun getUsers(): List<GithubUser> {
-        return users
-    }
+
+    fun getUsers() = Observable.fromCallable { users }
+        .subscribeOn(Schedulers.io())
 }

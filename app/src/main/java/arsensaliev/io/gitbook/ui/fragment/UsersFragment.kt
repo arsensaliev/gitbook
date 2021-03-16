@@ -12,6 +12,7 @@ import arsensaliev.io.gitbook.ui.App
 import arsensaliev.io.gitbook.ui.BackButtonListener
 import arsensaliev.io.gitbook.ui.adapter.UsersRVAdapter
 import arsensaliev.io.gitbook.ui.navigation.AndroidScreens
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
@@ -22,7 +23,12 @@ class UsersFragment : MvpAppCompatFragment(), UsersView, BackButtonListener {
     }
 
     private val presenter by moxyPresenter {
-        UsersPresenter(GithubUsersRepo(), App.instance.router, AndroidScreens())
+        UsersPresenter(
+            GithubUsersRepo(),
+            App.instance.router,
+            AndroidScreens(),
+            AndroidSchedulers.mainThread()
+        )
     }
 
     private var ui: FragmentUsersBinding? = null
