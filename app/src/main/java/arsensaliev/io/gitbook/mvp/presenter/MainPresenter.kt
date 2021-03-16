@@ -1,23 +1,18 @@
 package arsensaliev.io.gitbook.mvp.presenter
 
-import arsensaliev.io.gitbook.mvp.model.CountersModel
+import arsensaliev.io.gitbook.mvp.navigation.IScreens
 import arsensaliev.io.gitbook.mvp.view.MainView
+import com.github.terrakok.cicerone.Router
+import moxy.MvpPresenter
 
-class MainPresenter(val view: MainView) {
-    val model = CountersModel()
+class MainPresenter(val router: Router, val screens: IScreens) : MvpPresenter<MainView>() {
 
-    fun counterOneClick() {
-        val nextValue = model.next(0)
-        view.setButtonOneText(nextValue.toString())
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+        router.replaceScreen(screens.users())
     }
 
-    fun counterTwoClick() {
-        val nextValue = model.next(1)
-        view.setButtonTwoText(nextValue.toString())
-    }
-
-    fun counterThreeClick() {
-        val nextValue = model.next(2)
-        view.setButtonThreeText(nextValue.toString())
+    fun backClicked() {
+        router.exit()
     }
 }
