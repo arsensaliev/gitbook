@@ -7,9 +7,17 @@ import arsensaliev.io.gitbook.mvp.presenter.list.IUsersListPresenter
 import arsensaliev.io.gitbook.mvp.view.UsersView
 import arsensaliev.io.gitbook.mvp.view.list.IUserItemView
 import com.github.terrakok.cicerone.Router
+import io.reactivex.rxjava3.core.Scheduler
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 import moxy.MvpPresenter
 
-class UsersPresenter(val usersRepo: GithubUsersRepo, val router: Router, val screens: IScreens) :
+class UsersPresenter(
+    val usersRepo: GithubUsersRepo,
+    val router: Router,
+    val screens: IScreens,
+    val uiScheduler: Scheduler
+) :
     MvpPresenter<UsersView>() {
 
     class UsersListPresenter : IUsersListPresenter {
@@ -23,6 +31,8 @@ class UsersPresenter(val usersRepo: GithubUsersRepo, val router: Router, val scr
 
         override fun getCount(): Int = users.size
     }
+
+    val compositeDisposable = CompositeDisposable()
 
     val usersListPresenter = UsersListPresenter()
 
@@ -38,14 +48,25 @@ class UsersPresenter(val usersRepo: GithubUsersRepo, val router: Router, val scr
     }
 
     private fun loadData() {
-        val users = usersRepo.getUsers()
-        usersListPresenter.users.clear()
-        usersListPresenter.users.addAll(users)
-        viewState.updateList()
+        val disposable: Disposable = usersRepo.getUsers()
+            .observeOn(uiScheduler)
+            .subscribe({
+                usersListPresenter.users.addAll(it)
+                viewState.updateList()
+            }, {
+                it.printStackTrace()
+            })
+
+        compositeDisposable.addAll(disposable)
     }
 
     fun backClick(): Boolean {
         router.exit()
         return true
+    }
+
+    override fun onDestroy() {
+        compositeDisposable.dispose()
+        super.onDestroy()
     }
 }
