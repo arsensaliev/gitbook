@@ -1,8 +1,8 @@
 package arsensaliev.io.gitbook.mvp.presenter
 
-import arsensaliev.io.gitbook.mvp.model.GithubUsersRepo
+import arsensaliev.io.gitbook.mvp.model.repo.GithubUsersRepo
 import arsensaliev.io.gitbook.mvp.model.entity.GithubUser
-import arsensaliev.io.gitbook.mvp.navigation.IScreens
+import arsensaliev.io.gitbook.mvp.model.navigation.IScreens
 import arsensaliev.io.gitbook.mvp.presenter.list.IUsersListPresenter
 import arsensaliev.io.gitbook.mvp.view.UsersView
 import arsensaliev.io.gitbook.mvp.view.list.IUserItemView

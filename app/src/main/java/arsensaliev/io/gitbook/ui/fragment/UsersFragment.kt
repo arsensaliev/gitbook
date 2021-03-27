@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import arsensaliev.io.gitbook.databinding.FragmentUsersBinding
-import arsensaliev.io.gitbook.mvp.model.GithubUsersRepo
+import arsensaliev.io.gitbook.mvp.model.repo.GithubUsersRepo
 import arsensaliev.io.gitbook.mvp.presenter.UsersPresenter
 import arsensaliev.io.gitbook.mvp.view.UsersView
 import arsensaliev.io.gitbook.ui.App

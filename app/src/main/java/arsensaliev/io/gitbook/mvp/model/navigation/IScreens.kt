@@ -1,4 +1,4 @@
-package arsensaliev.io.gitbook.mvp.navigation
+package arsensaliev.io.gitbook.mvp.model.navigation
 
 import arsensaliev.io.gitbook.mvp.model.entity.GithubUser
 import com.github.terrakok.cicerone.Screen
