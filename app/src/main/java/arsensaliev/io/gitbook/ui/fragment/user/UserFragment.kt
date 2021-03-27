@@ -1,4 +1,4 @@
-package arsensaliev.io.gitbook.ui.fragment
+package arsensaliev.io.gitbook.ui.fragment.user
 
 import android.os.Bundle
 import android.view.LayoutInflater
