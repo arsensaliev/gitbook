@@ -1,8 +1,8 @@
 package arsensaliev.io.gitbook.mvp.presenter
 
-import arsensaliev.io.gitbook.mvp.model.repo.GithubUsersRepo
 import arsensaliev.io.gitbook.mvp.model.entity.GithubUser
 import arsensaliev.io.gitbook.mvp.model.navigation.IScreens
+import arsensaliev.io.gitbook.mvp.model.repo.IGithubUsersRepo
 import arsensaliev.io.gitbook.mvp.presenter.list.IUsersListPresenter
 import arsensaliev.io.gitbook.mvp.view.UsersView
 import arsensaliev.io.gitbook.mvp.view.list.IUserItemView
@@ -13,7 +13,7 @@ import io.reactivex.rxjava3.disposables.Disposable
 import moxy.MvpPresenter
 
 class UsersPresenter(
-    val usersRepo: GithubUsersRepo,
+    val usersRepo: IGithubUsersRepo,
     val router: Router,
     val screens: IScreens,
     val uiScheduler: Scheduler
@@ -26,7 +26,7 @@ class UsersPresenter(
 
         override fun bindView(view: IUserItemView) {
             val user = users[view.pos]
-            view.setLogin(user.login)
+            user.login?.let { view.setLogin(it) }
         }
 
         override fun getCount(): Int = users.size

@@ -5,7 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import arsensaliev.io.gitbook.databinding.FragmentUsersBinding
-import arsensaliev.io.gitbook.mvp.model.repo.GithubUsersRepo
+import arsensaliev.io.gitbook.mvp.model.api.ApiHolder
+import arsensaliev.io.gitbook.mvp.model.repo.RetrofitGithubUsersRepo
 import arsensaliev.io.gitbook.mvp.presenter.UsersPresenter
 import arsensaliev.io.gitbook.mvp.view.UsersView
 import arsensaliev.io.gitbook.ui.App
@@ -17,14 +18,13 @@ import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
 class UsersFragment : MvpAppCompatFragment(), UsersView, BackButtonListener {
-
     companion object {
         fun newInstance() = UsersFragment()
     }
 
     private val presenter by moxyPresenter {
         UsersPresenter(
-            GithubUsersRepo(),
+            RetrofitGithubUsersRepo(ApiHolder.api),
             App.instance.router,
             AndroidScreens(),
             AndroidSchedulers.mainThread()
