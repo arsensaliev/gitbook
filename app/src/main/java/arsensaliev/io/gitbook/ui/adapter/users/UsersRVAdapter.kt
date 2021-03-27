@@ -1,4 +1,4 @@
-package arsensaliev.io.gitbook.ui.adapter
+package arsensaliev.io.gitbook.ui.adapter.users
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import arsensaliev.io.gitbook.databinding.ItemUsersBinding
 import arsensaliev.io.gitbook.mvp.model.image.IImageLoader
-import arsensaliev.io.gitbook.mvp.presenter.list.IUsersListPresenter
+import arsensaliev.io.gitbook.mvp.presenter.users.IUsersListPresenter
 import arsensaliev.io.gitbook.mvp.view.users.list.IUserItemView
 
 class UsersRVAdapter(val presenter: IUsersListPresenter, val imageLoader: IImageLoader<ImageView>) :

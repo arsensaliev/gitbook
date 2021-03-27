@@ -1,4 +1,4 @@
-package arsensaliev.io.gitbook.mvp.presenter
+package arsensaliev.io.gitbook.mvp.presenter.main
 
 import arsensaliev.io.gitbook.mvp.model.navigation.IScreens
 import arsensaliev.io.gitbook.mvp.view.main.MainView

@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import arsensaliev.io.gitbook.databinding.FragmentUsersBinding
 import arsensaliev.io.gitbook.mvp.model.api.ApiHolder
 import arsensaliev.io.gitbook.mvp.model.repo.RetrofitGithubUsersRepo
-import arsensaliev.io.gitbook.mvp.presenter.UsersPresenter
+import arsensaliev.io.gitbook.mvp.presenter.users.UsersPresenter
 import arsensaliev.io.gitbook.mvp.view.users.UsersView
 import arsensaliev.io.gitbook.ui.App
 import arsensaliev.io.gitbook.ui.BackButtonListener
-import arsensaliev.io.gitbook.ui.adapter.UsersRVAdapter
+import arsensaliev.io.gitbook.ui.adapter.users.UsersRVAdapter
 import arsensaliev.io.gitbook.ui.image.GlideImageLoader
 import arsensaliev.io.gitbook.ui.navigation.AndroidScreens
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers

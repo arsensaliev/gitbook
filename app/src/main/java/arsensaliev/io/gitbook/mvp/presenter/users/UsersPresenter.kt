@@ -1,9 +1,8 @@
-package arsensaliev.io.gitbook.mvp.presenter
+package arsensaliev.io.gitbook.mvp.presenter.users
 
 import arsensaliev.io.gitbook.mvp.model.entity.GithubUser
 import arsensaliev.io.gitbook.mvp.model.navigation.IScreens
 import arsensaliev.io.gitbook.mvp.model.repo.IGithubUsersRepo
-import arsensaliev.io.gitbook.mvp.presenter.list.IUsersListPresenter
 import arsensaliev.io.gitbook.mvp.view.users.UsersView
 import arsensaliev.io.gitbook.mvp.view.users.list.IUserItemView
 import com.github.terrakok.cicerone.Router
