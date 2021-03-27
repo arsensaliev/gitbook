@@ -4,8 +4,8 @@ import arsensaliev.io.gitbook.mvp.model.entity.GithubUser
 import arsensaliev.io.gitbook.mvp.model.navigation.IScreens
 import arsensaliev.io.gitbook.mvp.model.repo.IGithubUsersRepo
 import arsensaliev.io.gitbook.mvp.presenter.list.IUsersListPresenter
-import arsensaliev.io.gitbook.mvp.view.UsersView
-import arsensaliev.io.gitbook.mvp.view.list.IUserItemView
+import arsensaliev.io.gitbook.mvp.view.users.UsersView
+import arsensaliev.io.gitbook.mvp.view.users.list.IUserItemView
 import com.github.terrakok.cicerone.Router
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.disposables.CompositeDisposable

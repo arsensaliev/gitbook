@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import arsensaliev.io.gitbook.databinding.FragmentUserBinding
 import arsensaliev.io.gitbook.mvp.model.entity.GithubUser
 import arsensaliev.io.gitbook.mvp.presenter.UserPresenter
-import arsensaliev.io.gitbook.mvp.view.UserView
+import arsensaliev.io.gitbook.mvp.view.user.UserView
 import arsensaliev.io.gitbook.ui.App
 import arsensaliev.io.gitbook.ui.BackButtonListener
 import moxy.MvpAppCompatFragment

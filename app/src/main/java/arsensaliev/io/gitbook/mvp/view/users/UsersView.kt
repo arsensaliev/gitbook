@@ -1,4 +1,4 @@
-package arsensaliev.io.gitbook.mvp.view
+package arsensaliev.io.gitbook.mvp.view.users
 
 import moxy.MvpView
 import moxy.viewstate.strategy.alias.AddToEndSingle

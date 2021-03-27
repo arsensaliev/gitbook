@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import arsensaliev.io.gitbook.databinding.ItemUsersBinding
 import arsensaliev.io.gitbook.mvp.model.image.IImageLoader
 import arsensaliev.io.gitbook.mvp.presenter.list.IUsersListPresenter
-import arsensaliev.io.gitbook.mvp.view.list.IUserItemView
+import arsensaliev.io.gitbook.mvp.view.users.list.IUserItemView
 
 class UsersRVAdapter(val presenter: IUsersListPresenter, val imageLoader: IImageLoader<ImageView>) :
     RecyclerView.Adapter<UsersRVAdapter.ViewHolder>() {

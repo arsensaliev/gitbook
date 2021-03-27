@@ -4,7 +4,7 @@ import android.os.Bundle
 import arsensaliev.io.gitbook.R
 import arsensaliev.io.gitbook.databinding.ActivityMainBinding
 import arsensaliev.io.gitbook.mvp.presenter.MainPresenter
-import arsensaliev.io.gitbook.mvp.view.MainView
+import arsensaliev.io.gitbook.mvp.view.main.MainView
 import arsensaliev.io.gitbook.ui.App
 import arsensaliev.io.gitbook.ui.BackButtonListener
 import arsensaliev.io.gitbook.ui.adapter.UsersRVAdapter

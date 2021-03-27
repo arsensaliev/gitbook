@@ -1,7 +1,7 @@
 package arsensaliev.io.gitbook.mvp.presenter
 
 import arsensaliev.io.gitbook.mvp.model.entity.GithubUser
-import arsensaliev.io.gitbook.mvp.view.UserView
+import arsensaliev.io.gitbook.mvp.view.user.UserView
 import com.github.terrakok.cicerone.Router
 import moxy.MvpPresenter
 

@@ -1,4 +1,4 @@
-package arsensaliev.io.gitbook.mvp.view.list
+package arsensaliev.io.gitbook.mvp.view.users.list
 
 interface IUserItemView : ItemView {
     fun setLogin(text: String)
