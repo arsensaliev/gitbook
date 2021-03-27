@@ -15,9 +15,9 @@ object ApiHolder {
 
     val api: IDataSource by lazy {
         Retrofit.Builder()
-            .baseUrl("https://api.github.com/users")
+            .baseUrl("https://api.github.com/")
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(IDataSource::class.java)
     }

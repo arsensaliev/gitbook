@@ -6,4 +6,5 @@
     <string name="fragment_user_user_name">Имя пользователя:</string>
     <string name="btn_convert">Загрузить</string>
     <string name="h_convert_image">Конвертация картинки jpg в png</string>
+    <string name="user_s_avatar">User\'s avatar</string>
 </resources>

@@ -12,6 +12,7 @@ import arsensaliev.io.gitbook.mvp.view.UsersView
 import arsensaliev.io.gitbook.ui.App
 import arsensaliev.io.gitbook.ui.BackButtonListener
 import arsensaliev.io.gitbook.ui.adapter.UsersRVAdapter
+import arsensaliev.io.gitbook.ui.image.GlideImageLoader
 import arsensaliev.io.gitbook.ui.navigation.AndroidScreens
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import moxy.MvpAppCompatFragment
@@ -48,7 +49,7 @@ class UsersFragment : MvpAppCompatFragment(), UsersView, BackButtonListener {
 
     override fun init() {
         ui?.rvUsers?.layoutManager = LinearLayoutManager(requireContext())
-        adapter = UsersRVAdapter(presenter.usersListPresenter)
+        adapter = UsersRVAdapter(presenter.usersListPresenter, GlideImageLoader())
         ui?.rvUsers?.adapter = adapter
     }
 

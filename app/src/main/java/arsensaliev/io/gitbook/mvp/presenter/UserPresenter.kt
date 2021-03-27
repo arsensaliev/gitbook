@@ -8,7 +8,7 @@ import moxy.MvpPresenter
 class UserPresenter(val router: Router, val user: GithubUser) : MvpPresenter<UserView>() {
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        viewState.setUserName(user.login)
+        user.login?.let { viewState.setUserName(it) }
     }
 
     fun backPressed(): Boolean {
