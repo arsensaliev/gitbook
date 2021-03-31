@@ -3,11 +3,11 @@ package arsensaliev.io.gitbook.ui.activity
 import android.os.Bundle
 import arsensaliev.io.gitbook.R
 import arsensaliev.io.gitbook.databinding.ActivityMainBinding
-import arsensaliev.io.gitbook.mvp.presenter.MainPresenter
-import arsensaliev.io.gitbook.mvp.view.MainView
+import arsensaliev.io.gitbook.mvp.presenter.main.MainPresenter
+import arsensaliev.io.gitbook.mvp.view.main.MainView
 import arsensaliev.io.gitbook.ui.App
 import arsensaliev.io.gitbook.ui.BackButtonListener
-import arsensaliev.io.gitbook.ui.adapter.UsersRVAdapter
+import arsensaliev.io.gitbook.ui.adapter.users.UsersRVAdapter
 import arsensaliev.io.gitbook.ui.navigation.AndroidScreens
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import moxy.MvpAppCompatActivity

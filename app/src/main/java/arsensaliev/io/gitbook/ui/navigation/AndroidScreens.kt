@@ -1,10 +1,10 @@
 package arsensaliev.io.gitbook.ui.navigation
 
+import arsensaliev.io.gitbook.mvp.model.entity.GithubRepository
 import arsensaliev.io.gitbook.mvp.model.entity.GithubUser
-import arsensaliev.io.gitbook.mvp.navigation.IScreens
-import arsensaliev.io.gitbook.ui.fragment.ConverterFragment
-import arsensaliev.io.gitbook.ui.fragment.UserFragment
-import arsensaliev.io.gitbook.ui.fragment.UsersFragment
+import arsensaliev.io.gitbook.mvp.model.navigation.IScreens
+import arsensaliev.io.gitbook.ui.fragment.user.UserFragment
+import arsensaliev.io.gitbook.ui.fragment.users.UsersFragment
 import com.github.terrakok.cicerone.Screen
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
@@ -13,5 +13,5 @@ class AndroidScreens : IScreens {
     override fun user(githubUser: GithubUser): Screen =
         FragmentScreen { UserFragment.newInstance(githubUser) }
 
-    override fun converter() = FragmentScreen { ConverterFragment.newInstance() }
+//    override fun repository(repository: GithubRepository): Screen = FragmentScreen {UsersFragment.newInstance()}
 }
