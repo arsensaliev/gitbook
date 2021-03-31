@@ -67,6 +67,7 @@ class UserFragment : MvpAppCompatFragment(), UserView, BackButtonListener {
     override fun init() {
         ui?.recyclerUserRepo?.layoutManager = LinearLayoutManager(requireContext())
         adapter = UserRVAdapter(presenter.repositoriesListPresenter)
+        ui?.recyclerUserRepo?.isNestedScrollingEnabled = false
         ui?.recyclerUserRepo?.adapter = adapter
     }
 
