@@ -37,7 +37,7 @@ class UserPresenter(
         viewState.init()
         loadData()
         user.login?.let { viewState.setUserName(it) }
-
+        user.avatarUrl?.let { viewState.loadAvatar(it) }
         repositoriesListPresenter.itemClickListener = { itemView ->
             val repository = repositoriesListPresenter.repositories[itemView.pos]
 //            router.navigateTo(screens.repository(repository))

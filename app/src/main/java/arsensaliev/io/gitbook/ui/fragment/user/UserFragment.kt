@@ -14,6 +14,7 @@ import arsensaliev.io.gitbook.mvp.view.user.UserView
 import arsensaliev.io.gitbook.ui.App
 import arsensaliev.io.gitbook.ui.BackButtonListener
 import arsensaliev.io.gitbook.ui.adapter.user.UserRVAdapter
+import arsensaliev.io.gitbook.ui.image.GlideImageLoader
 import arsensaliev.io.gitbook.ui.navigation.AndroidScreens
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import moxy.MvpAppCompatFragment
@@ -60,7 +61,7 @@ class UserFragment : MvpAppCompatFragment(), UserView, BackButtonListener {
     }
 
     override fun loadAvatar(url: String) {
-
+        ui?.userAvatar?.let { GlideImageLoader().load(url, it) }
     }
 
     override fun init() {
