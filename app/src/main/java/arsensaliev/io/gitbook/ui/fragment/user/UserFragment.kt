@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import arsensaliev.io.gitbook.databinding.FragmentUserBinding
 import arsensaliev.io.gitbook.mvp.model.api.ApiHolder
 import arsensaliev.io.gitbook.mvp.model.entity.GithubUser
+import arsensaliev.io.gitbook.mvp.model.entity.room.db.Database
 import arsensaliev.io.gitbook.mvp.model.repo.RetrofitGithubRepositoriesRepo
 import arsensaliev.io.gitbook.mvp.presenter.user.UserPresenter
 import arsensaliev.io.gitbook.mvp.view.user.UserView
@@ -16,6 +17,7 @@ import arsensaliev.io.gitbook.ui.BackButtonListener
 import arsensaliev.io.gitbook.ui.adapter.user.UserRVAdapter
 import arsensaliev.io.gitbook.ui.image.GlideImageLoader
 import arsensaliev.io.gitbook.ui.navigation.AndroidScreens
+import arsensaliev.io.gitbook.ui.network.AndroidNetworkStatus
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
@@ -35,7 +37,11 @@ class UserFragment : MvpAppCompatFragment(), UserView, BackButtonListener {
         UserPresenter(
             App.instance.router,
             user,
-            RetrofitGithubRepositoriesRepo(ApiHolder.api),
+            RetrofitGithubRepositoriesRepo(
+                ApiHolder.api,
+                AndroidNetworkStatus(App.instance),
+                Database.getInstance()
+            ),
             AndroidScreens(),
             AndroidSchedulers.mainThread()
         )

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import arsensaliev.io.gitbook.databinding.FragmentUsersBinding
 import arsensaliev.io.gitbook.mvp.model.api.ApiHolder
+import arsensaliev.io.gitbook.mvp.model.entity.room.db.Database
 import arsensaliev.io.gitbook.mvp.model.repo.RetrofitGithubUsersRepo
 import arsensaliev.io.gitbook.mvp.presenter.users.UsersPresenter
 import arsensaliev.io.gitbook.mvp.view.users.UsersView
@@ -14,6 +15,7 @@ import arsensaliev.io.gitbook.ui.BackButtonListener
 import arsensaliev.io.gitbook.ui.adapter.users.UsersRVAdapter
 import arsensaliev.io.gitbook.ui.image.GlideImageLoader
 import arsensaliev.io.gitbook.ui.navigation.AndroidScreens
+import arsensaliev.io.gitbook.ui.network.AndroidNetworkStatus
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
@@ -25,7 +27,11 @@ class UsersFragment : MvpAppCompatFragment(), UsersView, BackButtonListener {
 
     private val presenter by moxyPresenter {
         UsersPresenter(
-            RetrofitGithubUsersRepo(ApiHolder.api),
+            RetrofitGithubUsersRepo(
+                ApiHolder.api,
+                AndroidNetworkStatus(App.instance),
+                Database.getInstance()
+            ),
             App.instance.router,
             AndroidScreens(),
             AndroidSchedulers.mainThread()
