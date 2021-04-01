@@ -13,7 +13,7 @@ import arsensaliev.io.gitbook.mvp.model.entity.room.dao.UserDao
         RoomGithubUser::class,
         RoomGithubRepository::class
     ],
-    version = 1
+    version = 2
 )
 abstract class Database : RoomDatabase() {
     abstract val userDao: UserDao

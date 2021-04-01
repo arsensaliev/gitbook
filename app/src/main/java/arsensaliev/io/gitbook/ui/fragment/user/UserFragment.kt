@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import arsensaliev.io.gitbook.databinding.FragmentUserBinding
 import arsensaliev.io.gitbook.mvp.model.api.ApiHolder
+import arsensaliev.io.gitbook.mvp.model.cache.room.RoomGithubRepositoriesCache
 import arsensaliev.io.gitbook.mvp.model.entity.GithubUser
 import arsensaliev.io.gitbook.mvp.model.entity.room.db.Database
 import arsensaliev.io.gitbook.mvp.model.repo.RetrofitGithubRepositoriesRepo
@@ -40,7 +41,7 @@ class UserFragment : MvpAppCompatFragment(), UserView, BackButtonListener {
             RetrofitGithubRepositoriesRepo(
                 ApiHolder.api,
                 AndroidNetworkStatus(App.instance),
-                Database.getInstance()
+                RoomGithubRepositoriesCache(Database.getInstance())
             ),
             AndroidScreens(),
             AndroidSchedulers.mainThread()
