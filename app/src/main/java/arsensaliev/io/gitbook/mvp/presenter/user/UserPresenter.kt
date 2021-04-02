@@ -9,14 +9,23 @@ import arsensaliev.io.gitbook.mvp.view.user.list.IRepoItemView
 import com.github.terrakok.cicerone.Router
 import io.reactivex.rxjava3.core.Scheduler
 import moxy.MvpPresenter
+import javax.inject.Inject
+import javax.inject.Named
 
-class UserPresenter(
-    val router: Router,
-    val user: GithubUser,
-    val repositoriesRepo: IGithubRepositoriesRepo,
-    val screens: IScreens,
-    val uiSchedulers: Scheduler
-) : MvpPresenter<UserView>() {
+class UserPresenter(val user: GithubUser) : MvpPresenter<UserView>() {
+
+    @Inject
+    lateinit var repositoriesRepo: IGithubRepositoriesRepo
+
+    @field:Named("ui")
+    @Inject
+    lateinit var uiSchedulers: Scheduler
+
+    @Inject
+    lateinit var screens: IScreens
+
+    @Inject
+    lateinit var router: Router
 
     class RepositoriesListPresenter : IRepositoryListPresenter {
         val repositories = mutableListOf<GithubRepository>()

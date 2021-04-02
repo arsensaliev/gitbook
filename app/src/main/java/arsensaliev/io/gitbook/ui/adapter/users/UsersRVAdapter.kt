@@ -8,9 +8,13 @@ import arsensaliev.io.gitbook.databinding.ItemUsersBinding
 import arsensaliev.io.gitbook.mvp.model.image.IImageLoader
 import arsensaliev.io.gitbook.mvp.presenter.users.IUsersListPresenter
 import arsensaliev.io.gitbook.mvp.view.users.list.IUserItemView
+import javax.inject.Inject
 
-class UsersRVAdapter(val presenter: IUsersListPresenter, val imageLoader: IImageLoader<ImageView>) :
+class UsersRVAdapter(val presenter: IUsersListPresenter) :
     RecyclerView.Adapter<UsersRVAdapter.ViewHolder>() {
+
+    @Inject
+    lateinit var imageLoader: IImageLoader<ImageView>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(

@@ -10,14 +10,23 @@ import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 import moxy.MvpPresenter
+import javax.inject.Inject
+import javax.inject.Named
 
-class UsersPresenter(
-    val usersRepo: IGithubUsersRepo,
-    val router: Router,
-    val screens: IScreens,
-    val uiScheduler: Scheduler
-) :
-    MvpPresenter<UsersView>() {
+class UsersPresenter : MvpPresenter<UsersView>() {
+
+    @field:Named("ui")
+    @Inject
+    lateinit var uiScheduler: Scheduler
+
+    @Inject
+    lateinit var usersRepo: IGithubUsersRepo
+
+    @Inject
+    lateinit var router: Router
+
+    @Inject
+    lateinit var screens: IScreens
 
     class UsersListPresenter : IUsersListPresenter {
         val users = mutableListOf<GithubUser>()
@@ -25,7 +34,7 @@ class UsersPresenter(
 
         override fun bindView(view: IUserItemView) {
             val user = users[view.pos]
-            user.login?.let { view.setLogin(it) }
+            user.login.let { view.setLogin(it) }
             user.avatarUrl?.let { view.loadAvatar(it) }
         }
 
