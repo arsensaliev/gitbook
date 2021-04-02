@@ -7,7 +7,6 @@ import arsensaliev.io.gitbook.mvp.presenter.main.MainPresenter
 import arsensaliev.io.gitbook.mvp.view.main.MainView
 import arsensaliev.io.gitbook.ui.App
 import arsensaliev.io.gitbook.ui.BackButtonListener
-import arsensaliev.io.gitbook.ui.adapter.users.UsersRVAdapter
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import moxy.MvpAppCompatActivity
@@ -28,8 +27,6 @@ class MainActivity : MvpAppCompatActivity(), MainView {
             App.instance.appComponent.inject(this)
         }
     }
-
-    private var adapter: UsersRVAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

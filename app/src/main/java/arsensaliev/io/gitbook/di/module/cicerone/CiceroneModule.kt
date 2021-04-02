@@ -20,7 +20,7 @@ class CiceroneModule {
     @Provides
     fun router(): Router = cicerone.router
 
-    @Provides
     @Singleton
+    @Provides
     fun screens(): IScreens = AndroidScreens()
 }

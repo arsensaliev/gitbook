@@ -10,8 +10,6 @@ import arsensaliev.io.gitbook.mvp.view.users.UsersView
 import arsensaliev.io.gitbook.ui.App
 import arsensaliev.io.gitbook.ui.BackButtonListener
 import arsensaliev.io.gitbook.ui.adapter.users.UsersRVAdapter
-import arsensaliev.io.gitbook.ui.image.GlideImageLoader
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
@@ -21,9 +19,7 @@ class UsersFragment : MvpAppCompatFragment(), UsersView, BackButtonListener {
     }
 
     private val presenter by moxyPresenter {
-        UsersPresenter(
-            AndroidSchedulers.mainThread()
-        ).apply {
+        UsersPresenter().apply {
             App.instance.appComponent.inject(this)
         }
     }
@@ -45,7 +41,9 @@ class UsersFragment : MvpAppCompatFragment(), UsersView, BackButtonListener {
 
     override fun init() {
         ui?.rvUsers?.layoutManager = LinearLayoutManager(requireContext())
-        adapter = UsersRVAdapter(presenter.usersListPresenter, GlideImageLoader())
+        adapter = UsersRVAdapter(presenter.usersListPresenter).apply {
+            App.instance.appComponent.inject(this)
+        }
         ui?.rvUsers?.adapter = adapter
     }
 

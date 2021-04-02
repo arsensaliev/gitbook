@@ -1,4 +1,4 @@
-package arsensaliev.io.gitbook.di.module.ApiModule
+package arsensaliev.io.gitbook.di.module.api
 
 import arsensaliev.io.gitbook.mvp.model.api.IDataSource
 import arsensaliev.io.gitbook.mvp.model.network.INetworkStatus
@@ -16,8 +16,8 @@ import javax.inject.Singleton
 
 @Module
 class ApiModule {
-    @Provides
     @Singleton
+    @Provides
     fun api(gson: Gson): IDataSource = Retrofit.Builder()
         .baseUrl("https://api.github.com/")
         .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
@@ -25,14 +25,14 @@ class ApiModule {
         .build()
         .create(IDataSource::class.java)
 
-    @Provides
     @Singleton
+    @Provides
     fun gson(): Gson = GsonBuilder()
         .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
         .excludeFieldsWithoutExposeAnnotation()
         .create()
 
-    @Provides
     @Singleton
+    @Provides
     fun networkStatus(app: App): INetworkStatus = AndroidNetworkStatus(app)
 }

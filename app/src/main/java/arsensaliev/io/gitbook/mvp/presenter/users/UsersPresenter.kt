@@ -11,10 +11,13 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 import moxy.MvpPresenter
 import javax.inject.Inject
+import javax.inject.Named
 
-class UsersPresenter(
-    val uiScheduler: Scheduler
-) : MvpPresenter<UsersView>() {
+class UsersPresenter : MvpPresenter<UsersView>() {
+
+    @field:Named("ui")
+    @Inject
+    lateinit var uiScheduler: Scheduler
 
     @Inject
     lateinit var usersRepo: IGithubUsersRepo
