@@ -17,7 +17,6 @@ import arsensaliev.io.gitbook.ui.App
 import arsensaliev.io.gitbook.ui.BackButtonListener
 import arsensaliev.io.gitbook.ui.adapter.user.UserRVAdapter
 import arsensaliev.io.gitbook.ui.image.GlideImageLoader
-import arsensaliev.io.gitbook.ui.navigation.AndroidScreens
 import arsensaliev.io.gitbook.ui.network.AndroidNetworkStatus
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import moxy.MvpAppCompatFragment
@@ -36,16 +35,16 @@ class UserFragment : MvpAppCompatFragment(), UserView, BackButtonListener {
     val presenter: UserPresenter by moxyPresenter {
         val user = arguments?.getParcelable<GithubUser>(USER_ARG) as GithubUser
         UserPresenter(
-            App.instance.router,
-            user,
-            RetrofitGithubRepositoriesRepo(
+            user = user,
+            repositoriesRepo = RetrofitGithubRepositoriesRepo(
                 ApiHolder.api,
                 AndroidNetworkStatus(App.instance),
                 RoomGithubRepositoriesCache(Database.getInstance())
             ),
-            AndroidScreens(),
-            AndroidSchedulers.mainThread()
-        )
+            uiSchedulers = AndroidSchedulers.mainThread()
+        ).apply {
+            App.instance.appComponent.inject(this)
+        }
     }
 
     private var ui: FragmentUserBinding? = null
