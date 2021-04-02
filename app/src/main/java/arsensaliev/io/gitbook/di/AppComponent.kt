@@ -1,7 +1,7 @@
 package arsensaliev.io.gitbook.di
 
 import arsensaliev.io.gitbook.di.module.ApiModule.ApiModule
-import arsensaliev.io.gitbook.di.module.RepoModule.RepoModule
+import arsensaliev.io.gitbook.di.module.repoModule.RepoModule
 import arsensaliev.io.gitbook.di.module.app.AppModule
 import arsensaliev.io.gitbook.di.module.cache.CacheModule
 import arsensaliev.io.gitbook.di.module.cicerone.CiceroneModule

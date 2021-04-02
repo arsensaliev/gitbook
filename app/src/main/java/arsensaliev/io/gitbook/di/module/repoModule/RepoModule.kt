@@ -1,4 +1,4 @@
-package arsensaliev.io.gitbook.di.module.RepoModule
+package arsensaliev.io.gitbook.di.module.repoModule
 
 import arsensaliev.io.gitbook.mvp.model.api.IDataSource
 import arsensaliev.io.gitbook.mvp.model.cache.IGithubUsersCache
